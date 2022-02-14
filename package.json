@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/cjsellwood/backend-tech#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "@types/morgan": "^1.9.3",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
