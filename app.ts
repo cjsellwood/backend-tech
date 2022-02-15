@@ -6,6 +6,7 @@ import StatusError from "./utils/StatusError";
 
 const app = express();
 
+app.use(express.json());
 app.use(morgan("dev"));
 
 app.get("/", (_req: Request, res: Response, _next: NextFunction) => {

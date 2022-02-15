@@ -5,6 +5,7 @@ import {
   time,
   users,
   asyncError,
+  loginUser,
 } from "../controllers/testController";
 
 const router = express.Router();
@@ -18,5 +19,7 @@ router.get("/users", users);
 router.get("/error", error);
 
 router.get("/asyncError", asyncError);
+
+router.post("/login", loginUser);
 
 export default router;

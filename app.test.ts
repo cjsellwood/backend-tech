@@ -59,6 +59,26 @@ describe("Testing /test route", () => {
 
     expect(res.text).toBe("Async Error");
   });
+
+  test("Test login route for successful login", async () => {
+    const res = await api
+      .post("/test/login")
+      .send({ username: "Bob", password: "password" })
+      .expect(200)
+      .expect("Content-Type", /text/);
+
+    expect(res.text).toBe("Logged In");
+  });
+
+  test("Test login route for incorrect credentials", async () => {
+    const res = await api
+      .post("/test/login")
+      .send({ username: "Bill", password: "password" })
+      .expect(404)
+      .expect("Content-Type", /text/);
+
+    expect(res.text).toBe("Credentials are incorrect");
+  });
 });
 
 export default {};

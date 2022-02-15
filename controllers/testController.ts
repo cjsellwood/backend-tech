@@ -30,3 +30,14 @@ export const asyncError = catchAsync(
     );
   }
 );
+
+export const loginUser = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { username, password } = req.body;
+    if (username === "Bob" && password === "password") {
+      res.send("Logged In");
+    } else {
+      next(new StatusError("Credentials are incorrect", 404))
+    }
+  }
+);
