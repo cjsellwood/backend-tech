@@ -9,14 +9,14 @@ import StatusError from "./utils/StatusError";
 const app = express();
 
 app.use(express.json());
-app.use(morgan("dev"));
+app.use(morgan("dev", { skip: () => process.env.NODE_ENV === 'test' }));
 
-async function main() {
-  await connect("mongodb://localhost:27017/backendTest");
-}
-
+/* istanbul ignore next */
+// Start mongodb
 if (process.env.NODE_ENV !== "test") {
-  console.log("NOT TEST")
+  async function main() {
+    await connect("mongodb://localhost:27017/backendTest");
+  }
   main().catch((err) => console.log(err));
 }
 
@@ -30,7 +30,7 @@ app.use("/mongo", mongoRouter);
 // Error handler
 app.use(
   (error: StatusError, _req: Request, res: Response, _next: NextFunction) => {
-    console.log("ERROR:", error.status, error.message);
+    // console.log("ERROR:", error.status, error.message);
     res.status(error.status).send(error.message);
   }
 );
