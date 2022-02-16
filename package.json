@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon server.ts",
     "build": "tsc",
+    "seedMongo": "npm exec npx ts-node createMongoDb.ts",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand --watch",
     "test:coverage": "cross-env NODE_ENV=test jest --verbose --runInBand --watch --coverage"
   },
@@ -22,6 +23,8 @@
   "dependencies": {
     "@types/morgan": "^1.9.3",
     "express": "^4.17.2",
+    "joi": "^17.6.0",
+    "mongoose": "^6.2.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
@@ -31,6 +34,7 @@
     "@types/supertest": "^2.0.11",
     "cross-env": "^7.0.3",
     "jest": "^27.5.1",
+    "mongodb-memory-server": "^8.3.0",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.3",
