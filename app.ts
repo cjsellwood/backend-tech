@@ -15,7 +15,10 @@ async function main() {
   await connect("mongodb://localhost:27017/backendTest");
 }
 
-main().catch((err) => console.log(err));
+if (process.env.NODE_ENV !== "test") {
+  console.log("NOT TEST")
+  main().catch((err) => console.log(err));
+}
 
 app.get("/", (_req: Request, res: Response, _next: NextFunction) => {
   res.send("1. Hello World!");

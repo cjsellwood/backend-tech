@@ -6,16 +6,22 @@ import {
   getPosts,
   getPost,
   addPost,
+  updatePost,
+  deletePost,
 } from "../controllers/mongoController";
 
 router.get("/users", getUsers);
 
-router.get("/user/:id", getUser);
+router.get("/users/:id", getUser);
 
 router.get("/posts", getPosts);
 
 router.get("/posts/:id", getPost);
 
 router.post("/posts/", addPost);
+
+router.patch("/posts/:id", updatePost);
+
+router.delete("/posts/:id", deletePost);
 
 export default router;

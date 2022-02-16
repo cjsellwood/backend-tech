@@ -7,7 +7,7 @@ interface Post {
   date: Date;
 }
 const schema = new Schema<Post>({
-  userId: { type: Schema.Types.ObjectId, ref: "User" },
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   title: { type: String, required: true },
   text: { type: String, required: true },
   date: { type: String, required: true },
