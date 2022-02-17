@@ -25,7 +25,7 @@ describe("Testing /test route", () => {
       .expect("Content-Type", /text/);
 
     expect(res.text).toEqual(
-      expect.stringMatching(/\d{1,2}:\d{2}:\d{2} [ap]m/)
+      expect.stringMatching(/\d{1,2}:\d{2}:\d{2} [ap]m/i)
     );
   });
 
