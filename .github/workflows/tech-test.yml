@@ -1,0 +1,23 @@
+name: backend-tech
+on: [push]
+jobs:
+  app-testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mongodb-version: ['4.4.12']
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+
+      - uses: harmon758/postgresql-action@v1
+        with: postgresql version: '12'
+
+      - name: Jest tests
+        id: jest
+        run: npm run test
