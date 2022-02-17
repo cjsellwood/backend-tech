@@ -1,8 +1,10 @@
 import express from "express";
-import { home } from "../controllers/sqlController";
+import { users, posts } from "../controllers/sqlController";
 
 const router = express.Router();
 
-router.get("/", home)
+router.get("/users", users)
+
+router.get("/posts", posts);
 
 export default router;
