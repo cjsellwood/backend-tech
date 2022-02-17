@@ -176,27 +176,6 @@ describe("Testing mongo routes", () => {
     expect(res.text).toBe("userId is required");
   });
 
-  it("Test posts update wrong userId supplied", async () => {
-    const user = await User.findOne({});
-    const id = user!._id.toString();
-
-    const newPost = await api.post("/mongo/posts").send({
-      userId: id,
-      title: "Added title",
-      text: "Added text",
-    });
-
-    const postId = newPost.body._id;
-
-    const res = await api
-      .patch(`/mongo/posts/${postId}`)
-      .send({ title: "Patched title", text: "Patched text", userId: "1463" })
-      .expect(400)
-      .expect("Content-Type", /text/);
-
-    expect(res.text).toBe("userId is invalid");
-  });
-
   it("Test posts update wrong postId supplied", async () => {
     const user = await User.findOne({});
     const userId = user!._id.toString();
@@ -273,26 +252,6 @@ describe("Testing mongo routes", () => {
       .expect(401);
 
     expect(res.text).toBe("Not authorized");
-  });
-
-  it("Test posts can't delete a post if invalid userId", async () => {
-    const user = await User.findOne({});
-    const userId = user!._id.toString();
-
-    const newPost = await api.post("/mongo/posts").send({
-      userId,
-      title: "Added title",
-      text: "Added text",
-    });
-
-    const postId = newPost.body._id;
-
-    const res = await api
-      .delete(`/mongo/posts/${postId}`)
-      .send({ userId: "4534" })
-      .expect(400);
-
-    expect(res.text).toBe("userId is invalid");
   });
 
   it("Test posts can't delete a post if wrong postId", async () => {

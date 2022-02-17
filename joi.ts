@@ -7,25 +7,25 @@ export const addPostSchema = Joi.object({
   text: Joi.string()
     .required()
     .error(() => new Error("Text is required")),
-  userId: Joi.string()
-    .length(24)
+  userId: Joi.alternatives()
+    .try(Joi.string(), Joi.number())
     .required()
     .error((errors) => {
-      if (errors[0].code === "string.length") {
-        return new Error("userId is invalid");
-      }
+      // if (errors[0].code === "string.length") {
+      //   return new Error("userId is invalid");
+      // }
       return new Error("userId is required");
     }),
 });
 
 export const deletePostSchema = Joi.object({
-  userId: Joi.string()
-    .length(24)
+  userId: Joi.alternatives()
+    .try(Joi.string(), Joi.number())
     .required()
     .error((errors) => {
-      if (errors[0].code === "string.length") {
-        return new Error("userId is invalid");
-      }
+      // if (errors[0].code === "string.length") {
+      //   return new Error("userId is invalid");
+      // }
       return new Error("userId is required");
     }),
-})
+});

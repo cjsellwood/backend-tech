@@ -13,7 +13,7 @@ export default async (pool: Pool) => {
 
     await pool.query(`CREATE TABLE posts (
       id serial primary key,
-      userId int not null REFERENCES users(id),
+      user_id int not null REFERENCES users(id),
       title text not null,
       text text not null, 
       date timestamp not null
@@ -48,11 +48,12 @@ export default async (pool: Pool) => {
 
     for (let post of posts) {
       await pool.query(
-        `INSERT INTO posts(userId, title, text, date) VALUES($1, $2, $3, $4)`,
+        `INSERT INTO posts(user_id, title, text, date) VALUES($1, $2, $3, $4)`,
         [post.userId, post.title, post.text, post.date]
       );
     }
   } catch (error) {
-    console.log("SEEDING", error);
+    /* istanbul ignore next */
+    console.log("SEEDING ERROR:", error);
   }
 };
