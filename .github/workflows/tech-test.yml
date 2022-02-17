@@ -7,8 +7,6 @@ jobs:
       matrix:
         mongodb-version: ["4.4.12"]
     steps:
-      - name: Github checkout
-        uses: actions/checkout@v2
 
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@1.7.0
@@ -20,7 +18,8 @@ jobs:
         with:
           postgresql version: "12"
 
-      - name: Install dependencies
+      - name: Github checkout
+        uses: actions/checkout@v2
         run: npm install
 
       - name: Jest tests
