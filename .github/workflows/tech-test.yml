@@ -17,10 +17,9 @@ jobs:
       - uses: harmon758/postgresql-action@v1
         with:
           postgresql version: "12"
-
-      - name: Github checkout
-        uses: actions/checkout@v2
-        run: npm install
+          
+      - uses: actions/checkout@v2
+      - run: npm install
 
       - name: Jest tests
         id: jest
