@@ -18,7 +18,9 @@ jobs:
         uses: harmon758/postgresql-action@v1
         with:
           postgresql version: "12"
-          
+          postgresql user: postgres
+          postgresql password: password
+
       - run: npm install
 
       - name: Jest tests
