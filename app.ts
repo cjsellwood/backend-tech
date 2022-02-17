@@ -4,12 +4,13 @@ import { connect } from "mongoose";
 
 import testRouter from "./routes/testRouter";
 import mongoRouter from "./routes/mongoRouter";
+import sqlRouter from "./routes/sqlRouter";
 import StatusError from "./utils/StatusError";
 
 const app = express();
 
 app.use(express.json());
-app.use(morgan("dev", { skip: () => process.env.NODE_ENV === 'test' }));
+app.use(morgan("dev", { skip: () => process.env.NODE_ENV === "test" }));
 
 /* istanbul ignore next */
 // Start mongodb
@@ -26,6 +27,7 @@ app.get("/", (_req: Request, res: Response, _next: NextFunction) => {
 
 app.use("/test", testRouter);
 app.use("/mongo", mongoRouter);
+app.use("/sql", sqlRouter);
 
 // Error handler
 app.use(
