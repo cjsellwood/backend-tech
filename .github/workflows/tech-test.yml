@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        mongodb-version: ['4.4.12']
+        mongodb-version: ["4.4.12"]
     steps:
       - uses: actions/checkout@v2
       - run: npm install
@@ -16,7 +16,8 @@ jobs:
           mongodb-version: ${{ matrix.mongodb-version }}
 
       - uses: harmon758/postgresql-action@v1
-        with: postgresql version: '12'
+        with:
+          postgresql version: "12"
 
       - name: Jest tests
         id: jest
