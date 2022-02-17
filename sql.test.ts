@@ -18,6 +18,10 @@ describe("SQL routes testing", () => {
     await seedSql(pool);
   });
 
+  afterAll(async () => {
+    await pool.end();
+  });
+
   it("Tests get users route", async () => {
     const res = await api
       .get("/sql/users")
