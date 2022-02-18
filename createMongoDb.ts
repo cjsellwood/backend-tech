@@ -1,5 +1,7 @@
 import { connect, connection } from "mongoose";
 import seedDb from "./seedDb";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function main(uri: string) {
   await connect(uri);
@@ -7,4 +9,4 @@ async function main(uri: string) {
   connection.close();
 }
 
-main("mongodb://localhost:27017/backendTest").catch((err) => console.log(err));
+main(process.env.MONGO_URI!).catch((err) => console.log(err));
