@@ -9,8 +9,9 @@
     "seedMongo": "npm exec npx ts-node createMongoDb.ts",
     "seedSql": "npm exec npx ts-node createSqlDb.ts",
     "pretest": "npm exec npx ts-node createSqlDb.ts",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --watch",
-    "test:coverage": "cross-env NODE_ENV=test jest --verbose --runInBand --watch --coverage"
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --watchAll",
+    "test:actions": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit",
+    "test:coverage": "cross-env NODE_ENV=test jest --verbose --runInBand --watchAll --coverage"
   },
   "repository": {
     "type": "git",
