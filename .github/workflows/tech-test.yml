@@ -28,5 +28,7 @@ jobs:
 
 
       - name: Jest tests
+        env: 
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/backendTech
         id: jest
         run: npm run test:actions

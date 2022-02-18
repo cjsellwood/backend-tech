@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.ts",
-    "build": "tsc",
+    "start:prod": "node build/server.js",
+    "build": "tsc && npm run seedMongo && npm exec npx ts-node herokuSql.ts",
     "seedMongo": "npm exec npx ts-node createMongoDb.ts",
     "seedSql": "npm exec npx ts-node createSqlDb.ts",
     "pretest": "npm exec npx ts-node createSqlDb.ts",
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/cjsellwood/backend-tech#readme",
   "dependencies": {
     "@types/morgan": "^1.9.3",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "joi": "^17.6.0",
     "mongoose": "^6.2.1",
