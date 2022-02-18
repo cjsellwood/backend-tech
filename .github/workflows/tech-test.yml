@@ -16,10 +16,10 @@ jobs:
 
       - name: Start Postgresql
         uses: harmon758/postgresql-action@v1
+        env: 
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/backendTech
         with:
           postgresql version: "12"
-          postgresql user: postgres
-          postgresql password: password
 
       - run: npm install
 

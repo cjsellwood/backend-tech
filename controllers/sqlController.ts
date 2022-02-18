@@ -5,7 +5,6 @@ import { query } from "../sql/db";
 export const users = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const users = await query("SELECT * FROM users", []);
-    console.log(users);
     res.json(users.rows);
   }
 );
