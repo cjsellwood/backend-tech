@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.ts",
+    "start:prod": "node build/app.js",
     "build": "tsc",
     "seedMongo": "npm exec npx ts-node createMongoDb.ts",
     "seedSql": "npm exec npx ts-node createSqlDb.ts",
